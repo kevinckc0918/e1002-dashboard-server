@@ -19,56 +19,137 @@ body {
   background:
     linear-gradient(
       135deg,
-      #6ea8a1,
-      #a6c7b9
+      #6f9998,
+      #bdd0c3
     );
 }
 
 .dashboard {
-  width: 100%;
-  height: 100%;
+  position: relative;
+  width: 800px;
+  height: 480px;
+}
+
+.weather-card,
+.date-card {
+  position: absolute;
+  top: 18px;
+  padding: 13px 15px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.88);
+  color: #161616;
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.2);
+}
+
+.weather-card {
+  left: 18px;
+  width: 250px;
+}
+
+.weather-main {
   display: flex;
   align-items: center;
-  justify-content: center;
+  gap: 10px;
 }
 
-.panel {
-  width: 420px;
-  padding: 34px;
-  border-radius: 26px;
-  background: rgba(255, 255, 255, 0.86);
-  text-align: center;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.2);
+.weather-icon {
+  width: 62px;
+  height: 62px;
+  object-fit: contain;
 }
 
-h1 {
-  margin: 0;
-  font-size: 34px;
+.temperature {
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 800;
 }
 
-.build {
-  margin: 8px 0 26px;
-  font-size: 15px;
-  color: #555;
+.temperature span {
+  font-size: 18px;
+  vertical-align: top;
+}
+
+.summary {
+  margin-top: 4px;
+  max-width: 150px;
+  max-height: 36px;
+  overflow: hidden;
+  font-size: 14px;
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.weather-details {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 9px;
+  padding-top: 8px;
+  border-top:
+    1px solid rgba(0, 0, 0, 0.15);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.date-card {
+  right: 18px;
+  min-width: 180px;
+  text-align: right;
 }
 
 .date {
-  font-size: 30px;
+  font-size: 21px;
   font-weight: 800;
 }
 
 .weekday {
-  margin-top: 8px;
-  font-size: 22px;
+  margin-top: 4px;
+  color: #444;
+  font-size: 16px;
   font-weight: 700;
 }
 
-.status {
-  margin-top: 28px;
-  padding: 10px 14px;
-  border-radius: 12px;
-  background: #e7f3e4;
-  color: #2d642e;
-  font-size: 17px;
+.warning-bar {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  min-height: 44px;
+  padding: 11px 15px;
+  overflow: hidden;
+  border-radius: 14px;
+  background: rgba(255, 229, 222, 0.94);
+  color: #8b1515;
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 800;
+  box-shadow:
+    0 5px 18px rgba(0, 0, 0, 0.2);
+}
+
+.warning-bar.safe {
+  background: rgba(234, 246, 229, 0.94);
+  color: #2e6130;
+}
+
+.stale-note {
+  position: absolute;
+  bottom: 70px;
+  left: 18px;
+  padding: 5px 9px;
+  border-radius: 9px;
+  background: rgba(255, 245, 206, 0.92);
+  color: #694a00;
+  font-size: 11px;
   font-weight: 700;
+}
+
+.build-label {
+  position: absolute;
+  right: 18px;
+  bottom: 70px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.7);
+  font-size: 10px;
 }

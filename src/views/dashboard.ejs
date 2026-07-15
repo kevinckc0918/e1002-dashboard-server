@@ -2,25 +2,81 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
+
   <meta
     name="viewport"
-    content="width=800, initial-scale=1, maximum-scale=1, user-scalable=no"
+    content="width=800, initial-scale=1,
+             maximum-scale=1, user-scalable=no"
   >
+
   <title><%= title %></title>
-  <link rel="stylesheet" href="/css/glass.css">
+
+  <link
+    rel="stylesheet"
+    href="/css/glass.css"
+  >
 </head>
 
 <body>
   <main class="dashboard">
-    <section class="panel">
-      <h1><%= title %></h1>
-      <p class="build"><%= build %></p>
+    <section class="weather-card">
+      <div class="weather-main">
+        <% if (weather.icon) { %>
+          <img
+            class="weather-icon"
+            src="https://www.hko.gov.hk/images/HKOWxIconOutline/pic<%= weather.icon %>.png"
+            alt="天氣圖示"
+          >
+        <% } %>
 
+        <div>
+          <div class="temperature">
+            <%= weather.temperature %><span>°C</span>
+          </div>
+
+          <div class="summary">
+            <%= weather.summary %>
+          </div>
+        </div>
+      </div>
+
+      <div class="weather-details">
+        <span>
+          濕度 <%= weather.humidity %>%
+        </span>
+
+        <span>
+          ↑<%= weather.maximumTemperature %>°
+          ↓<%= weather.minimumTemperature %>°
+        </span>
+      </div>
+    </section>
+
+    <section class="date-card">
       <div class="date"><%= date %></div>
       <div class="weekday"><%= weekday %></div>
-
-      <div class="status">Dashboard is ready</div>
     </section>
+
+    <section
+      class="warning-bar
+      <%= weather.warnings.length === 0 ? 'safe' : '' %>"
+    >
+      <% if (weather.warnings.length > 0) { %>
+        ⚠ <%= weather.warnings.join("　") %>
+      <% } else { %>
+        現時沒有天氣警告
+      <% } %>
+    </section>
+
+    <% if (weather.stale) { %>
+      <div class="stale-note">
+        現正顯示最近一次取得的天氣資料
+      </div>
+    <% } %>
+
+    <div class="build-label">
+      <%= build %>
+    </div>
   </main>
 </body>
 </html>

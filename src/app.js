@@ -2,6 +2,11 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 
+import {
+  getWeather,
+  getWeatherCacheStatus
+} from "./services/weather.service.js";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -10,30 +15,41 @@ const app = express();
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use(
+  express.static(
+    path.join(__dirname, "..", "public")
+  )
+);
 
-app.get("/", (req, res) => {
+app.get("/", async (req, res) => {
+  const now = new Date();
+  const weather = await getWeather();
+
+  res.set("Cache-Control", "no-store");
+
   res.render("dashboard", {
     title: "E1002 Dashboard",
-    build: "v3.0.0-build001",
+    build: "v3.0.0-build002",
     date: new Intl.DateTimeFormat("zh-HK", {
       timeZone: "Asia/Hong_Kong",
       year: "numeric",
       month: "2-digit",
       day: "2-digit"
-    }).format(new Date()),
+    }).format(now),
     weekday: new Intl.DateTimeFormat("zh-HK", {
       timeZone: "Asia/Hong_Kong",
       weekday: "long"
-    }).format(new Date())
+    }).format(now),
+    weather
   });
 });
 
 app.get("/health", (req, res) => {
   res.json({
     status: "ok",
-    build: "v3.0.0-build001",
-    uptime: Math.floor(process.uptime())
+    build: "v3.0.0-build002",
+    uptime: Math.floor(process.uptime()),
+    weatherCache: getWeatherCacheStatus()
   });
 });
 
