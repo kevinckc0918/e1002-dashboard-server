@@ -1,7 +1,17 @@
-<div
-class="background-photo"
-style="
-background-image:
-url('<%= photo?.url ?? "" %>');
-">
-</div>
+<% if (photo) { %>
+  <div class="photo-layer" aria-hidden="true">
+    <img
+      class="background-photo-blur"
+      src="<%= photo.url %>"
+      alt=""
+    >
+
+    <div class="background-photo-shade"></div>
+
+    <img
+      class="background-photo-main"
+      src="<%= photo.url %>"
+      alt=""
+    >
+  </div>
+<% } %>

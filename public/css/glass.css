@@ -154,18 +154,12 @@ body {
   font-size: 10px;
 }
 
-.background-photo {
-  position: absolute;
-  inset: 0;
-  width: 800px;
-  height: 480px;
-  object-fit: cover;
-  z-index: 0;
-}
 
 .dashboard {
   position: relative;
   z-index: 1;
+  width: 800px;
+  height: 480px;
 }
 
 .weather-card,
@@ -174,4 +168,51 @@ body {
 .stale-note,
 .build-label {
   z-index: 2;
+}
+
+.photo-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 800px;
+  height: 480px;
+  overflow: hidden;
+  background: #222;
+}
+
+.background-photo-blur {
+  position: absolute;
+  top: -30px;
+  left: -30px;
+
+  width: 860px;
+  height: 540px;
+
+  object-fit: cover;
+  object-position: center center;
+
+  filter: blur(22px);
+  transform: scale(1.08);
+
+  opacity: 0.82;
+}
+
+.background-photo-shade {
+  position: absolute;
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.background-photo-main {
+  position: absolute;
+  inset: 0;
+
+  width: 800px;
+  height: 480px;
+
+  object-fit: contain;
+  object-position: center center;
+
+  filter: none;
 }
