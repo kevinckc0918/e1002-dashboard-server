@@ -153,3 +153,25 @@ body {
   background: rgba(255, 255, 255, 0.7);
   font-size: 10px;
 }
+
+.background-photo {
+  position: absolute;
+  inset: 0;
+  width: 800px;
+  height: 480px;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.dashboard {
+  position: relative;
+  z-index: 1;
+}
+
+.weather-card,
+.date-card,
+.warning-bar,
+.stale-note,
+.build-label {
+  z-index: 2;
+}
