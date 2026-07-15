@@ -1,0 +1,14 @@
+services:
+  dashboard:
+    build: .
+    container_name: e1002-dashboard-server
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      PORT: 3000
+      TZ: Asia/Hong_Kong
+    volumes:
+      - ./public/photos:/app/public/photos
+      - ./public/icons:/app/public/icons
+      - ./cache:/app/cache
