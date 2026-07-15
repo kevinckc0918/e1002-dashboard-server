@@ -1,3 +1,4 @@
+import { getSelectedPhoto } from "./services/photo.service.js";
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -24,6 +25,7 @@ app.use(
 app.get("/", async (req, res) => {
   const now = new Date();
   const weather = await getWeather();
+  const photo = await getSelectedPhoto();
 
   res.set("Cache-Control", "no-store");
 
@@ -40,7 +42,8 @@ app.get("/", async (req, res) => {
       timeZone: "Asia/Hong_Kong",
       weekday: "long"
     }).format(now),
-    weather
+    weather,
+    photo
   });
 });
 
