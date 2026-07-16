@@ -23,9 +23,43 @@ body{background:#222}
 .warning-icon-item span{padding:2px;color:#7d1010;font-size:8px;line-height:1;font-weight:900;text-align:center}
 .warning-icon-more{color:#721111;font-size:9px;line-height:1;font-weight:900;white-space:nowrap}
 
-.date-card{position:absolute;top:6px;right:6px;z-index:2;width:max-content;min-width:148px;padding:9px 11px 8px;border-radius:13px;background:rgba(255,255,255,.89);color:#161616;text-align:right;box-shadow:0 3px 12px rgba(0,0,0,.18)}
-.date{font-size:20px;line-height:1.05;font-weight:800;white-space:nowrap}
-.weekday{margin-top:5px;color:#3e3e3e;font-size:15px;line-height:1;font-weight:750;white-space:nowrap}
+.date-card{
+  position:absolute;
+  top:6px;
+  right:6px;
+  z-index:2;
+
+  display:inline-flex;
+  flex-direction:column;
+  align-items:flex-end;
+
+  width:auto;
+  min-width:0;
+
+  padding:7px 9px 6px;
+
+  border-radius:11px;
+
+  background:rgba(255,255,255,.88);
+
+  box-shadow:0 2px 10px rgba(0,0,0,.18);
+}
+
+.date{
+  font-size:19px;
+  line-height:1;
+  font-weight:800;
+  white-space:nowrap;
+}
+
+.weekday{
+  margin-top:3px;
+  font-size:14px;
+  line-height:1;
+  font-weight:700;
+  white-space:nowrap;
+  color:#444;
+}
 
 .warning-bar{position:absolute;right:6px;bottom:6px;left:6px;z-index:2;min-height:34px;max-height:56px;padding:7px 10px;overflow:hidden;border-radius:11px;background:rgba(255,229,222,.94);color:#8b1515;font-size:13px;line-height:1.35;font-weight:800;box-shadow:0 3px 12px rgba(0,0,0,.18)}
 .warning-bar.safe{background:rgba(234,246,229,.94);color:#2e6130}
