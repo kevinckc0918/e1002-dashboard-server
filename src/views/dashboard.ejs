@@ -2,25 +2,48 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=800, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta
+    name="viewport"
+    content="width=800, initial-scale=1,
+             maximum-scale=1, user-scalable=no"
+  >
   <title><%= title %></title>
   <link rel="stylesheet" href="/css/glass.css">
 </head>
+
 <body>
   <%- include("widgets/photo", { photo }) %>
+
   <main class="dashboard">
+    <section class="date-card">
+      <div class="date"><%= date %></div>
+      <div class="weekday"><%= weekday %></div>
+    </section>
+
     <section class="weather-card">
       <div class="weather-grid">
         <div class="weather-left">
           <% if (weather.icon) { %>
-            <img class="weather-icon" src="https://www.hko.gov.hk/images/HKOWxIconOutline/pic<%= weather.icon %>.png" alt="天氣圖示">
+            <img
+              class="weather-icon"
+              src="https://www.hko.gov.hk/images/HKOWxIconOutline/pic<%= weather.icon %>.png"
+              alt="天氣圖示"
+            >
           <% } %>
-          <div class="humidity">濕度 <%= weather.humidity %>%</div>
+
+          <div class="humidity">
+            濕度 <%= weather.humidity %>%
+          </div>
         </div>
 
         <div class="weather-center">
-          <div class="temperature"><%= weather.temperature %><span>°C</span></div>
-          <div class="summary"><%= weather.summary %></div>
+          <div class="temperature">
+            <%= weather.temperature %><span>°C</span>
+          </div>
+
+          <div class="summary">
+            <%= weather.summary %>
+          </div>
         </div>
 
         <div class="weather-right">
@@ -30,18 +53,30 @@
           </div>
 
           <% if (weather.warningIcons.length > 0) { %>
-            <div class="warning-icons" aria-label="生效中天氣警告">
+            <div
+              class="warning-icons"
+              aria-label="生效中天氣警告"
+            >
               <% weather.warningIcons.slice(0, 3).forEach((warning) => { %>
-                <div class="warning-icon-item" title="<%= warning.name %>">
+                <div
+                  class="warning-icon-item"
+                  title="<%= warning.name %>"
+                >
                   <% if (warning.iconUrl) { %>
-                    <img src="<%= warning.iconUrl %>" alt="<%= warning.name %>">
+                    <img
+                      src="<%= warning.iconUrl %>"
+                      alt="<%= warning.name %>"
+                    >
                   <% } else { %>
                     <span><%= warning.shortLabel %></span>
                   <% } %>
                 </div>
               <% }) %>
+
               <% if (weather.warningIcons.length > 3) { %>
-                <span class="warning-icon-more">+<%= weather.warningIcons.length - 3 %></span>
+                <span class="warning-icon-more">
+                  +<%= weather.warningIcons.length - 3 %>
+                </span>
               <% } %>
             </div>
           <% } %>
@@ -49,12 +84,10 @@
       </div>
     </section>
 
-    <section class="date-card">
-      <div class="date"><%= date %></div>
-      <div class="weekday"><%= weekday %></div>
-    </section>
-
-    <section class="warning-bar <%= weather.warnings.length === 0 ? 'safe' : '' %>">
+    <section
+      class="warning-bar
+      <%= weather.warnings.length === 0 ? 'safe' : '' %>"
+    >
       <% if (weather.warnings.length > 0) { %>
         ⚠ <%= weather.warnings.join("　") %>
       <% } else { %>
@@ -63,7 +96,9 @@
     </section>
 
     <% if (weather.stale) { %>
-      <div class="stale-note">現正顯示最近一次取得的天氣資料</div>
+      <div class="stale-note">
+        現正顯示最近一次取得的天氣資料
+      </div>
     <% } %>
 
     <div class="build-label"><%= build %></div>
