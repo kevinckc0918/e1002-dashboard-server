@@ -8,17 +8,39 @@
 </head>
 <body>
   <%- include("widgets/photo", { photo }) %>
+
   <main class="dashboard">
-    <section class="weather-card">
+    <section class="weather-card <%= weather.warningIcons.length > 0 ? 'has-warning-icons' : '' %>">
+      <% if (weather.warningIcons.length > 0) { %>
+        <div class="warning-icons" aria-label="生效中天氣警告">
+          <% weather.warningIcons.slice(0, 3).forEach((warning) => { %>
+            <div class="warning-icon-item" title="<%= warning.name %>">
+              <% if (warning.iconUrl) { %>
+                <img src="<%= warning.iconUrl %>" alt="<%= warning.name %>">
+              <% } else { %>
+                <span><%= warning.shortLabel %></span>
+              <% } %>
+            </div>
+          <% }) %>
+          <% if (weather.warningIcons.length > 3) { %>
+            <span class="warning-icon-more">+<%= weather.warningIcons.length - 3 %></span>
+          <% } %>
+        </div>
+      <% } %>
+
       <div class="weather-main">
         <% if (weather.icon) { %>
-          <img class="weather-icon" src="https://www.hko.gov.hk/images/HKOWxIconOutline/pic<%= weather.icon %>.png" alt="天氣圖示">
+          <img class="weather-icon"
+               src="https://www.hko.gov.hk/images/HKOWxIconOutline/pic<%= weather.icon %>.png"
+               alt="天氣圖示">
         <% } %>
-        <div>
+
+        <div class="weather-text">
           <div class="temperature"><%= weather.temperature %><span>°C</span></div>
           <div class="summary"><%= weather.summary %></div>
         </div>
       </div>
+
       <div class="weather-details">
         <span>濕度 <%= weather.humidity %>%</span>
         <span>↑<%= weather.maximumTemperature %>° ↓<%= weather.minimumTemperature %>°</span>

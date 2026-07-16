@@ -6,16 +6,28 @@ body{background:#222}
 .background-photo-shade{position:absolute;inset:0;background:rgba(0,0,0,.08)}
 .background-photo-main{position:absolute;inset:0;width:800px;height:480px;object-fit:contain;object-position:center}
 .dashboard{position:relative;z-index:1;width:800px;height:480px}
-.weather-card{position:absolute;top:6px;left:6px;z-index:2;width:238px;padding:8px 10px 7px;border-radius:14px;background:rgba(255,255,255,.88);color:#161616;box-shadow:0 3px 12px rgba(0,0,0,.18)}
-.weather-main{display:flex;align-items:center;gap:8px}
+
+.weather-card{position:absolute;top:6px;left:6px;z-index:2;width:254px;padding:8px 10px 7px;border-radius:14px;background:rgba(255,255,255,.89);color:#161616;box-shadow:0 3px 12px rgba(0,0,0,.18)}
+.weather-main{display:flex;align-items:center;gap:8px;min-height:56px}
 .weather-icon{width:54px;height:54px;object-fit:contain;flex:0 0 auto}
+.weather-text{min-width:0;max-width:168px}
+.weather-card.has-warning-icons .weather-text{max-width:106px}
 .temperature{font-size:35px;line-height:.95;font-weight:800;letter-spacing:-1px}
 .temperature span{font-size:16px;vertical-align:top;margin-left:1px}
-.summary{margin-top:3px;max-width:145px;max-height:34px;overflow:hidden;font-size:13px;line-height:1.25;font-weight:700}
+.summary{margin-top:3px;max-height:34px;overflow:hidden;font-size:13px;line-height:1.25;font-weight:700}
+
+.warning-icons{position:absolute;top:7px;right:7px;z-index:4;display:flex;align-items:center;justify-content:flex-end;gap:3px;max-width:86px;min-height:29px}
+.warning-icon-item{width:27px;height:27px;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:5px;background:rgba(255,255,255,.78)}
+.warning-icon-item img{display:block;max-width:27px;max-height:27px;object-fit:contain}
+.warning-icon-item span{padding:2px;color:#7d1010;font-size:8px;line-height:1;font-weight:900;text-align:center}
+.warning-icon-more{color:#721111;font-size:9px;line-height:1;font-weight:900}
+
 .weather-details{display:flex;justify-content:space-between;gap:8px;margin-top:6px;padding-top:6px;border-top:1px solid rgba(0,0,0,.14);font-size:12px;font-weight:700}
-.date-card{position:absolute;top:6px;right:6px;z-index:2;min-width:132px;padding:7px 9px 6px;border-radius:13px;background:rgba(255,255,255,.88);color:#161616;text-align:right;box-shadow:0 3px 12px rgba(0,0,0,.18)}
-.date{font-size:17px;line-height:1.05;font-weight:800;white-space:nowrap}
-.weekday{margin-top:3px;color:#444;font-size:13px;line-height:1;font-weight:700}
+
+.date-card{position:absolute;top:6px;right:6px;z-index:2;width:max-content;min-width:148px;padding:9px 11px 8px;border-radius:13px;background:rgba(255,255,255,.89);color:#161616;text-align:right;box-shadow:0 3px 12px rgba(0,0,0,.18)}
+.date{font-size:20px;line-height:1.05;font-weight:800;white-space:nowrap}
+.weekday{margin-top:5px;color:#3e3e3e;font-size:15px;line-height:1;font-weight:750;white-space:nowrap}
+
 .warning-bar{position:absolute;right:6px;bottom:6px;left:6px;z-index:2;min-height:34px;max-height:56px;padding:7px 10px;overflow:hidden;border-radius:11px;background:rgba(255,229,222,.94);color:#8b1515;font-size:13px;line-height:1.35;font-weight:800;box-shadow:0 3px 12px rgba(0,0,0,.18)}
 .warning-bar.safe{background:rgba(234,246,229,.94);color:#2e6130}
 .stale-note{position:absolute;bottom:46px;left:6px;z-index:2;padding:4px 7px;border-radius:7px;background:rgba(255,245,206,.92);color:#694a00;font-size:10px;font-weight:700}
