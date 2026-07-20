@@ -31,7 +31,7 @@ app.get("/", async (req, res) => {
 
   res.render("dashboard", {
     title: "E1002 Dashboard",
-    build: "v3.0.0-build004.3",
+    build: "v3.0.0-build004.4-full",
     date: new Intl.DateTimeFormat("zh-HK", {
       timeZone: "Asia/Hong_Kong",
       year: "numeric",
@@ -50,7 +50,7 @@ app.get("/", async (req, res) => {
 app.get("/health", (req, res) => {
   res.json({
     status: "ok",
-    build: "v3.0.0-build004.3",
+    build: "v3.0.0-build004.4-full",
     uptime: Math.floor(process.uptime()),
     weatherCache: getWeatherCacheStatus()
   });
