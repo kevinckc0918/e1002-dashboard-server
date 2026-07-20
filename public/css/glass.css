@@ -64,7 +64,7 @@ body {
   height: 480px;
 }
 
-/* Build004.2：右上天氣 Widget */
+/* Build004.3：右上天氣 Widget，提升圖示對比 */
 .weather-card {
   position: absolute;
   top: 6px;
@@ -105,10 +105,14 @@ body {
 
   object-fit: contain;
 
-  border: 1px solid rgba(90, 100, 110, 0.12);
+  border: 1px solid rgba(35, 40, 45, 0.55);
   border-radius: 50%;
 
-  background: rgba(205, 211, 217, 0.92);
+  background: rgba(105, 112, 120, 0.96);
+
+  filter:
+    contrast(1.18)
+    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
 }
 
 .humidity {
@@ -232,7 +236,7 @@ body {
   white-space: nowrap;
 }
 
-/* Build004.2：左上日期 Widget */
+/* Build004.3：左上日期 Widget */
 .date-card {
   position: absolute;
   top: 6px;
