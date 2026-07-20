@@ -352,3 +352,25 @@ body {
   line-height: 1;
   font-weight: 600;
 }
+
+.weather-card,
+.date-card {
+  background: #ffffff !important;
+  border: 2px solid #000000 !important;
+  box-shadow: none !important;
+}
+
+.temperature,
+.date,
+.weekday,
+.summary,
+.humidity,
+.high-low {
+  color: #000000 !important;
+}
+
+.weather-icon {
+  background: #000000 !important;
+  border: 2px solid #000000 !important;
+  filter: none !important;
+}
