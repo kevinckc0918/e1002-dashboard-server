@@ -1,376 +1,52 @@
-* {
-  box-sizing: border-box;
-}
-
-html,
-body {
-  width: 800px;
-  height: 480px;
-  margin: 0;
-  overflow: hidden;
-  font-family:
-    "Microsoft JhengHei",
-    "Noto Sans TC",
-    Arial,
-    sans-serif;
-}
-
-body {
-  background: #222;
-}
-
-.photo-layer {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  width: 800px;
-  height: 480px;
-  overflow: hidden;
-  background: #222;
-}
-
-.background-photo-blur {
-  position: absolute;
-  top: -28px;
-  left: -28px;
-  width: 856px;
-  height: 536px;
-  object-fit: cover;
-  object-position: center;
-  filter: blur(20px);
-  transform: scale(1.07);
-  opacity: 0.78;
-}
-
-.background-photo-shade {
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.08);
-}
-
-.background-photo-main {
-  position: absolute;
-  inset: 0;
-  width: 800px;
-  height: 480px;
-  object-fit: contain;
-  object-position: center;
-}
-
-.dashboard {
-  position: relative;
-  z-index: 1;
-  width: 800px;
-  height: 480px;
-}
-
-/* Build004.3：右上天氣 Widget，提升圖示對比 */
-.weather-card {
-  position: absolute;
-  top: 6px;
-  right: 6px;
-  z-index: 2;
-
-  width: 218px;
-  padding: 6px 7px;
-
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 16px;
-
-  background: rgba(232, 236, 240, 0.91);
-  color: #161616;
-
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.13);
-}
-
-.weather-grid {
-  display: grid;
-  grid-template-columns: 52px minmax(0, 1fr) 31px;
-  align-items: start;
-  column-gap: 6px;
-}
-
-.weather-left {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  min-width: 0;
-}
-
-.weather-icon {
-  width: 50px;
-  height: 50px;
-  padding: 4px;
-
-  object-fit: contain;
-
-  border: 1px solid rgba(35, 40, 45, 0.55);
-  border-radius: 50%;
-
-  background: rgba(105, 112, 120, 0.96);
-
-  filter:
-    contrast(1.18)
-    drop-shadow(0 1px 1px rgba(0, 0, 0, 0.45));
-}
-
-.humidity {
-  margin-top: 5px;
-
-  color: #222;
-
-  font-size: 10.5px;
-  line-height: 1;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.weather-center {
-  min-width: 0;
-}
-
-.temperature {
-  color: #111;
-
-  font-size: 32px;
-  line-height: 0.92;
-  font-weight: 800;
-  letter-spacing: -1px;
-  white-space: nowrap;
-}
-
-.temperature span {
-  margin-left: 1px;
-
-  color: #222;
-
-  font-size: 13px;
-  vertical-align: top;
-}
-
-.summary {
-  margin-top: 5px;
-
-  max-height: 62px;
-  overflow: hidden;
-
-  color: #202326;
-
-  font-size: 11.3px;
-  line-height: 1.34;
-  font-weight: 700;
-}
-
-.weather-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  min-width: 31px;
-}
-
-.high-low {
-  color: #202326;
-
-  font-size: 10.5px;
-  line-height: 1.35;
-  font-weight: 800;
-  text-align: right;
-  white-space: nowrap;
-}
-
-.warning-icons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3px;
-
-  margin-top: 6px;
-}
-
-.warning-icon-item {
-  width: 27px;
-  height: 27px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  overflow: hidden;
-
-  border: 1px solid rgba(70, 80, 90, 0.13);
-  border-radius: 6px;
-
-  background: rgba(200, 207, 214, 0.94);
-
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.45);
-}
-
-.warning-icon-item img {
-  display: block;
-
-  max-width: 25px;
-  max-height: 25px;
-
-  object-fit: contain;
-}
-
-.warning-icon-item span {
-  padding: 2px;
-
-  color: #711010;
-
-  font-size: 7.5px;
-  line-height: 1;
-  font-weight: 900;
-  text-align: center;
-}
-
-.warning-icon-more {
-  color: #651010;
-
-  font-size: 8px;
-  line-height: 1;
-  font-weight: 900;
-  white-space: nowrap;
-}
-
-/* Build004.3：左上日期 Widget */
-.date-card {
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  z-index: 2;
-
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-
-  width: auto;
-  min-width: 0;
-  padding: 7px 9px 6px;
-
-  border: 1px solid rgba(255, 255, 255, 0.42);
-  border-radius: 15px;
-
-  background: rgba(232, 236, 240, 0.91);
-  color: #161616;
-
-  text-align: left;
-
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.13);
-}
-
-.date {
-  font-size: 19px;
-  line-height: 1;
-  font-weight: 800;
-  white-space: nowrap;
-}
-
-.weekday {
-  margin-top: 3px;
-
-  color: #3d4348;
-
-  font-size: 14px;
-  line-height: 1;
-  font-weight: 700;
-  white-space: nowrap;
-}
-
-.warning-bar {
-  position: absolute;
-  right: 6px;
-  bottom: 6px;
-  left: 6px;
-  z-index: 2;
-
-  min-height: 34px;
-  max-height: 56px;
-  padding: 7px 10px;
-
-  overflow: hidden;
-
-  border: 1px solid rgba(255, 255, 255, 0.36);
-  border-radius: 15px;
-
-  background: rgba(244, 232, 219, 0.93);
-  color: #7f1717;
-
-  font-size: 13px;
-  line-height: 1.35;
-  font-weight: 800;
-
-  box-shadow:
-    0 2px 8px rgba(0, 0, 0, 0.13);
-}
-
-.warning-bar.safe {
-  background: rgba(224, 234, 226, 0.93);
-  color: #2d5a32;
-}
-
-.stale-note {
-  position: absolute;
-  bottom: 46px;
-  left: 6px;
-  z-index: 2;
-
-  padding: 4px 7px;
-
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 9px;
-
-  background: rgba(238, 228, 196, 0.93);
-  color: #624600;
-
-  font-size: 10px;
-  font-weight: 700;
-
-  box-shadow:
-    0 2px 7px rgba(0, 0, 0, 0.11);
-}
-
-.build-label {
-  position: absolute;
-  right: 6px;
-  bottom: 46px;
-  z-index: 2;
-
-  padding: 2px 5px;
-
-  border: 1px solid rgba(255, 255, 255, 0.34);
-  border-radius: 7px;
-
-  background: rgba(216, 221, 225, 0.82);
-  color: #333;
-
-  font-size: 8px;
-  line-height: 1;
-  font-weight: 600;
-}
+/* Build004.4 - E-paper High Contrast Theme */
 
 .weather-card,
-.date-card {
-  background: #ffffff !important;
-  border: 2px solid #000000 !important;
-  box-shadow: none !important;
+.date-card{
+    background:#FFFFFF;
+    border:2px solid #000;
+    box-shadow:none;
+}
+
+.warning-bar{
+    background:#FFF6CC;
+    border:2px solid #000;
+    color:#000;
+    box-shadow:none;
+}
+
+.warning-bar.safe{
+    background:#E8F5E9;
+    color:#000;
+}
+
+.weather-icon{
+    background:#000;
+    border:2px solid #000;
+    border-radius:50%;
+    padding:4px;
+    filter:none;
 }
 
 .temperature,
-.date,
-.weekday,
 .summary,
 .humidity,
-.high-low {
-  color: #000000 !important;
+.high-low,
+.date,
+.weekday{
+    color:#000;
+    font-weight:800;
 }
 
-.weather-icon {
-  background: #000000 !important;
-  border: 2px solid #000000 !important;
-  filter: none !important;
+.background-photo-blur{
+    display:none;
+}
+
+.background-photo-shade{
+    background:rgba(255,255,255,.05);
+}
+
+.build-label{
+    background:#FFF;
+    color:#000;
+    border:1px solid #000;
 }
